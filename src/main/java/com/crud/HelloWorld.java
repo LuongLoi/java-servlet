@@ -1,5 +1,6 @@
 package com.crud;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,10 +14,23 @@ public class HelloWorld extends HttpServlet {
 		System.out.println("Start Servlet");
 	}
 	
+//	@Override
+//	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		System.out.println(req.getMethod());
+//	}
+	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println(req.getMethod());
+		resp.setContentType("text/html");  
+		PrintWriter pw=resp.getWriter();  
+		  
+		String name=req.getParameter("name");//will return value  
+		  
+		String context_root = req.getContextPath();
+		pw.println("Welcome "+ name +" " +context_root );
+		pw.close();
 	}
 	
 	@Override

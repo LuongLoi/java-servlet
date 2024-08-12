@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<project name="CRUDWarFile" default="war">
+
+    <path id="compile.classpath">
+        <fileset dir="src/main/webapp/WEB-INF/lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="init">
+        <echo>Java/JVM version: ${ant.java.version}</echo> 
+        <echo>Java/JVM detail version: ${java.version}</echo> 
+        <mkdir dir="build/classes"/>
+        <mkdir dir="dist" />
+    </target>
+
+    <target name="compile" depends="init">
+        <javac destdir="build/classes" srcdir="src" encoding="UTF-8" includeantruntime="false" target="17" source="17" nowarn="on">
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+    <target name="war" depends="compile">
+        <war destfile="dist/CRUDApp.war" webxml="src/main/webapp/WEB-INF/web.xml">
+            <fileset dir="dist"/>
+            <lib dir="src/main/webapp/WEB-INF/lib"/>
+            <classes dir="build/classes"/>
+        </war>
+    </target>
+
+    <target name="clean">
+        <delete dir="dist" />
+        <delete dir="build/classes" />
+    </target>
+
+</project>
