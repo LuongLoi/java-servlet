@@ -30,7 +30,7 @@ webapp/WEB-INF/classes/
 /webapp/.project
 /webapp/.settings/org.eclipse.core.resources.prefs
 /webapp/WEB-INF/rpt/.jrxml
-/webapp/WEB-INF/lib/
+src/main/webapp/WEB-INF/lib/
 
 **/.DS_Store
 src/resources/conf_common_vn.properties
