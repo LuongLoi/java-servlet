@@ -10,6 +10,9 @@
 	crossorigin="anonymous">
 </head>
 <body>
+	<%
+	String username = session.getAttribute("username").toString();
+	%>
 
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark"
@@ -23,6 +26,13 @@
 				<li><a href="<%=request.getContextPath()%>/list"
 					class="nav-link">Users</a></li>
 			</ul>
+			<ul class="navbar-nav">
+				<li><p class="nav-link">Xin chào, <%=username%></p></li>
+			</ul>
+			<ul class="navbar-nav">
+				<li><a href="logout-servlet" class="nav-link">Đăng xuất</a></li>
+			</ul>
+
 		</nav>
 	</header>
 	<br>
@@ -58,7 +68,7 @@
 							<td><c:out value="${user.email}" /></td>
 							<td><c:out value="${user.fullName}" /></td>
 							<td><c:out value="${user.address}" /></td>
-							<td><c:out value="${user.phone}"/></td>
+							<td><c:out value="${user.phone}" /></td>
 							<td><a href="edit?id=<c:out value='${user.id}' />">Edit</a>
 								&nbsp;&nbsp;&nbsp;&nbsp; <a
 								href="delete?id=<c:out value='${user.id}' />">Delete</a></td>
